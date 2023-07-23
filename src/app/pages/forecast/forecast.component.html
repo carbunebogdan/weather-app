@@ -1,12 +1,36 @@
 <div class="forecast-container">
     <div class="forecast-container__list" *ngIf="forecastWeatherGroupedByDay$ | async">
-        <div class="forecast-container__list__item" *ngFor="let item of (forecastWeatherGroupedByDay$ | async)">
+        <div class="forecast-container__list__item" *ngFor="let item of (forecastWeatherGroupedByDay$ | async)"
+            (click)="selectedDay = item">
             <span>{{item.day}}</span>
             <img [src]="item.icon" alt="">
             <div>
                 <span>{{item.tempMin}} - {{item.tempMax}}°C</span>
             </div>
         </div>
+    </div>
+    <div class="forecast-container__selected-day" *ngIf="selectedDay">
+        <h2>{{selectedDay.day}}</h2>
+        <table>
+            <thead>
+                <th></th>
+                <th>Hour</th>
+                <th>Min</th>
+                <th>Max</th>
+                <th>Rain</th>
+                <th>Wind</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let hour of selectedDay.list">
+                    <td><img [src]="hour.weather.icon" alt=""></td>
+                    <td>{{hour.date | date: 'HH:MM'}}</td>
+                    <td>{{hour.weather.tempMin}}</td>
+                    <td>{{hour.weather.tempMax}}</td>
+                    <td>{{hour.rain?.['3h'] || 0}}mm</td>
+                    <td>{{hour.wind.speed}} km/h</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 <a [routerLink]="['']">See today's weather</a>

@@ -27,6 +27,7 @@ type DayObjectGroups = { [key: string]: ForecastDay }
 export class ForecastComponent implements OnInit {
   forecastWeather$!: Observable<ForecastWeather>;
   forecastWeatherGroupedByDay$!: Observable<DayGroups>;
+  selectedDay!: ForecastDay;
 
   constructor(private weatherService: WeatherService, private locationService: LocationService, private datePipe: DatePipe) { }
 

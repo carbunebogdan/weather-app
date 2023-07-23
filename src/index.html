@@ -12,10 +12,33 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap"
     rel="stylesheet">
+  <style>
+    .loader {
+      margin: 50px auto 0;
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #3b3b3b;
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      animation: spin 600ms ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <app-root></app-root>
+  <app-root>
+    <div class="loader"></div>
+  </app-root>
 </body>
 
 </html>

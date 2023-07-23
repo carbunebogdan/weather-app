@@ -1,9 +1,12 @@
 :host {
     display: flex;
     flex-direction: column;
+    gap: 8px;
 
     .forecast-container {
         display: flex;
+        flex-direction: column;
+        gap: 8px;
 
         &__list {
             display: flex;
@@ -20,6 +23,20 @@
                 border-radius: 5px;
                 padding: 4px 8px;
                 cursor: pointer;
+            }
+        }
+
+        &__selected-day {
+            h2 {
+                font-size: 26px;
+            }
+
+            table {
+                width: 100%;
+
+                td {
+                    text-align: center;
+                }
             }
         }
     }

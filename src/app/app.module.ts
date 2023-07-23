@@ -5,11 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CurrentWeatherComponent } from './pages/current-weather/current-weather.component';
 import { ForecastComponent } from './pages/forecast/forecast.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { currentWeatherInitializer } from './initializers/current-weather.initializer';
 import { LocationService } from './services/location/location.service';
 import { WeatherService } from './services/weather/weather.service';
 import { DatePipe } from '@angular/common';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DatePipe } from '@angular/common';
   ],
   providers: [
     DatePipe,
-    { provide: APP_INITIALIZER, useFactory: currentWeatherInitializer, deps: [LocationService, WeatherService], multi: true }
+    { provide: APP_INITIALIZER, useFactory: currentWeatherInitializer, deps: [LocationService, WeatherService], multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
