@@ -1,3 +1,6 @@
+### IMPORTANT
+Before running `npm start` please make sure you create `config.ts` file in `src/environment`: Duplicate `config.ts.example` and rename it to `config.ts`. I will provide an API key in the mail or you can use your own key :D
+
 # WeatherApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
