@@ -1,0 +1,26 @@
+:host {
+    display: flex;
+    flex-direction: column;
+
+    .forecast-container {
+        display: flex;
+
+        &__list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+
+            &__item {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 10rem;
+                border: 1px solid gainsboro;
+                border-radius: 5px;
+                padding: 4px 8px;
+                cursor: pointer;
+            }
+        }
+    }
+}

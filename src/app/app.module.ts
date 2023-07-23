@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { currentWeatherInitializer } from './initializers/current-weather.initializer';
 import { LocationService } from './services/location/location.service';
 import { WeatherService } from './services/weather/weather.service';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -22,8 +23,10 @@ import { WeatherService } from './services/weather/weather.service';
     HttpClientModule,
   ],
   providers: [
+    DatePipe,
     { provide: APP_INITIALIZER, useFactory: currentWeatherInitializer, deps: [LocationService, WeatherService], multi: true }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

@@ -20,7 +20,8 @@ export interface IWeather {
     },
     snow?: {
         '3h': number,
-    }
+    },
+    date: Date;
 }
 
 export interface IWeatherLocation {
@@ -30,9 +31,7 @@ export interface IWeatherLocation {
     sunset: Date,
 }
 
-export interface ICurrentWeather extends IWeather, IWeatherLocation {
-    date: Date;
-}
+export interface ICurrentWeather extends IWeather, IWeatherLocation { }
 
 export interface IForecastWeather extends IWeatherLocation {
     days: Array<IWeather>,
@@ -88,7 +87,7 @@ export class ForecastWeather implements IForecastWeather {
     country: string;
     sunrise: Date;
     sunset: Date;
-    
+
     constructor(data: ForecastResponse) {
         this.city = data.city.name;
         this.country = data.city.country;
@@ -102,6 +101,7 @@ export class ForecastWeather implements IForecastWeather {
                 throw new Error("[Forecast day item] Weather main object does not exist");
             }
             return {
+                date: new Date(day.dt * 1000),
                 weather: {
                     main: day.weather[0].main,
                     description: day.weather[0].description,

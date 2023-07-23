@@ -1,2 +1,12 @@
-<p>forecast works!</p>
-<a href="/">See today's weather</a>
+<div class="forecast-container">
+    <div class="forecast-container__list" *ngIf="forecastWeatherGroupedByDay$ | async">
+        <div class="forecast-container__list__item" *ngFor="let item of (forecastWeatherGroupedByDay$ | async)">
+            <span>{{item.day}}</span>
+            <img [src]="item.icon" alt="">
+            <div>
+                <span>{{item.tempMin}} - {{item.tempMax}}°C</span>
+            </div>
+        </div>
+    </div>
+</div>
+<a [routerLink]="['']">See today's weather</a>
