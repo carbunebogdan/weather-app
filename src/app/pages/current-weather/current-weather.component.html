@@ -1,2 +1,60 @@
-<p>current-weather works!</p>
+<div class="weather-container">
+    <div class="weather-container__location">
+        <h2>{{(currentWeather$ | async)?.city}}, {{(currentWeather$ | async)?.country}}</h2>
+        <span>{{(currentWeather$ | async)?.date | date: 'fullDate'}}</span>
+    </div>
+    <div class="flex">
+        <img class="weather-container__img" [src]="(currentWeather$ | async)?.weather?.icon" alt="" height="100"
+            width="100">
+        <div class="weather-container__data">
+            <h1>{{(currentWeather$ | async)?.weather?.temp | number: '1.0-0'}} °C</h1>
+            <span>{{(currentWeather$ | async)?.weather?.description | titlecase}}</span>
+        </div>
+    </div>
+    <hr>
+    <table class="weather-container__details">
+        <tbody>
+            <tr>
+                <td>
+                    <div>
+                        <span>{{(currentWeather$ | async)?.weather?.tempMax}} °C</span>
+                        <span>High</span>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <span>{{(currentWeather$ | async)?.wind?.speed}} km/h</span>
+                        <span>Wind</span>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <span>{{(currentWeather$ | async)?.sunrise | date: 'h:mm'}}</span>
+                        <span>Sunrise</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        <span>{{(currentWeather$ | async)?.weather?.tempMin}} °C</span>
+                        <span>Low</span>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <span>{{(currentWeather$ | async)?.rain || 0}} mm</span>
+                        <span>Rain</span>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <span>{{(currentWeather$ | async)?.sunset | date: 'h:mm'}}</span>
+                        <span>Sunset</span>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 <a href="/four-days">See 4 day forecast</a>
