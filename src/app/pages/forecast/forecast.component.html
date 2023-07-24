@@ -1,6 +1,6 @@
 <div class="forecast-container">
     <div class="forecast-container__list" *ngIf="forecastWeatherGroupedByDay$ | async">
-        <div class="forecast-container__list__item" *ngFor="let item of (forecastWeatherGroupedByDay$ | async)"
+        <div class="forecast-container__list__item" [ngClass]="{'forecast-container__list__item--selected': selectedDay && selectedDay.day === item.day}" *ngFor="let item of (forecastWeatherGroupedByDay$ | async)"
             (click)="selectedDay = item">
             <span>{{item.day}}</span>
             <img [src]="item.icon" alt="">

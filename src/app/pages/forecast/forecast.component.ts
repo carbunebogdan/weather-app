@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Coords } from 'src/app/models/client/location';
 import { ForecastWeather, IWeather } from 'src/app/models/client/weather';
@@ -22,7 +22,8 @@ type DayObjectGroups = { [key: string]: ForecastDay }
 @Component({
   selector: 'app-forecast',
   templateUrl: './forecast.component.html',
-  styleUrls: ['./forecast.component.scss']
+  styleUrls: ['./forecast.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ForecastComponent implements OnInit {
   forecastWeather$!: Observable<ForecastWeather>;
